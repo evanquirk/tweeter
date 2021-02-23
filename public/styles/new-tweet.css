@@ -1,0 +1,27 @@
+.new-tweet {
+  margin: auto;
+}
+
+#tweet-text {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid;
+  resize: none;
+  outline: none;
+  background-color: inherit;
+
+}
+
+#form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25em;
+  font-family: 'Bungee', sans-serif;
+}
+
+#form-footer button {
+  background-color: #4056A1;
+  color: #ffffff;
+  border: none;
+}
