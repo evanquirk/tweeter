@@ -1,15 +1,15 @@
-.tweet-container {
+#tweet-container article {
   border: 2px solid lightblue;
   margin: 1em 0 1em 0;
 }
-.tweet-container:hover {
+#tweet-container article:hover {
   border-radius: 0px;
   background: #9dc6cd;
   box-shadow:  50px 50px 100px #6b878b, 
                -50px -50px 100px #cfffff;
 }
 
-.tweet-container header {
+#tweet-container article header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,31 +17,31 @@
 
 }
 
-.tweet-container header img {
+#tweet-container article header img {
   max-width: 75px;
 }
 
-.tweet-container header .left {
+#tweet-container article header .left {
   display: flex;
   align-items: center;
 }
 
-.tweet-container header .user-handle {
+#tweet-container article header .user-handle {
   visibility: hidden;
   color: teal;
 }
 
-.tweet-container:hover header .user-handle {
+#tweet-container article:hover header .user-handle {
   visibility: visible;
   color: teal;
 }
 
-.tweet-container .tweet-body {
+#tweet-container article .tweet-body {
   border-bottom: 2px solid rgb(207, 223, 231);
   margin: 0 .5em 0 .5em;
 }
 
-.tweet-container footer {
+#tweet-container article footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,6 +49,6 @@
   font-size: .6em;
 }
 
-.tweet-container footer .icons {
-  color: rgb(111, 214, 214);
+#tweet-container article footer .icons {
+  color: teal;
 }
