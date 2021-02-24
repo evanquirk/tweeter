@@ -1,9 +1,12 @@
 .tweet-container {
-  border: 2px solid black;
+  border: 2px solid lightblue;
   margin: 1em 0 1em 0;
 }
 .tweet-container:hover {
-  box-shadow: 10px 10px teal;
+  border-radius: 0px;
+  background: #9dc6cd;
+  box-shadow:  50px 50px 100px #6b878b, 
+               -50px -50px 100px #cfffff;
 }
 
 .tweet-container header {
@@ -34,7 +37,7 @@
 }
 
 .tweet-container .tweet-body {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(207, 223, 231);
   margin: 0 .5em 0 .5em;
 }
 
@@ -47,5 +50,5 @@
 }
 
 .tweet-container footer .icons {
-  color: teal;
+  color: rgb(111, 214, 214);
 }
