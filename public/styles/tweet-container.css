@@ -1,0 +1,51 @@
+.tweet-container {
+  border: 2px solid black;
+  margin: 1em 0 1em 0;
+}
+.tweet-container:hover {
+  box-shadow: 10px 10px teal;
+}
+
+.tweet-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em;
+
+}
+
+.tweet-container header img {
+  max-width: 75px;
+}
+
+.tweet-container header .left {
+  display: flex;
+  align-items: center;
+}
+
+.tweet-container header .user-handle {
+  visibility: hidden;
+  color: teal;
+}
+
+.tweet-container:hover header .user-handle {
+  visibility: visible;
+  color: teal;
+}
+
+.tweet-container .tweet-body {
+  border-bottom: 2px solid black;
+  margin: 0 .5em 0 .5em;
+}
+
+.tweet-container footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+  font-size: .6em;
+}
+
+.tweet-container footer .icons {
+  color: teal;
+}
