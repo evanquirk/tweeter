@@ -1,4 +1,4 @@
-header {
+.avatar-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,4 +10,3 @@ header {
   font-size: 1.5em;
   color: #ffffff;
 }
-
