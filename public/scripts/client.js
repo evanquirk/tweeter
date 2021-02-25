@@ -23,12 +23,17 @@
 //   }
 // ]
 
-const handleTweetSubmit = function() {
+const formSubmitHandler = function() {
 
   $("form").on("submit", function(event) {
     event.preventDefault();
     console.log("Button clicked, performing AJAX call...");
-    // const text = $("#tweet-text").val();
+    const text = $("#tweet-text").val();
+    if (text === ""){
+      window.alert("You must add text to your tweet!")
+    } else if (text.length > 140) {
+      window.alert("Your tweet is too long!");
+    } else {
     $.ajax("/tweets", {
       method: "POST",
       data: $("#tweet-text").serialize(),
@@ -36,9 +41,10 @@ const handleTweetSubmit = function() {
 
     })
       .then(function () {
-        // 1. reset counter, 2. empty form, 3. empty tweet container >> reload tweets
+        // 1. reset counter, 2. empty form, 3. empty tweet container . remove . empty >> reload tweets
         console.log('Success!')
       })
+     }
   });
   
 }
@@ -46,6 +52,8 @@ const handleTweetSubmit = function() {
 function loadTweets () {
   $.get("/tweets", function(data) {
     renderTweets(data);
+  }).fail(function(error) {
+    console.log(error);
   });
 }
 
@@ -90,5 +98,5 @@ return $tweet;
 
 $(document).ready(function () {
   loadTweets();
-  handleTweetSubmit();
+  formSubmitHandler();
 })
