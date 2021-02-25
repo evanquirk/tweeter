@@ -1,26 +1,42 @@
-
-//-------- Form Submit For Tweet Creation ----------------------------------------------------------
+//-------- Form Submit For Tweet Creation -----------------------------------------------------
 //Capture form submit to store form info using AJAX POST request, and reset form for next tweet. 
 
-const formSubmitHandler = function () {
+const formEventHandler = function (event) {
+  // prevent page reload:
+  event.preventDefault();
+
+  // length of textarea input:
+  const text = $("#tweet-text").val();
+
+  // validate tweet isn't blank or too long (truthy/falsey condition):
+  if (tweetValidation(text)) {
+    $.ajax("/tweets", {
+      method: "POST",
+      data: $("#tweet-text").serialize(),
+      dataType: "text"
+    })
+    .then(function () {
+      $(".counter").text(140);
+      $("form").trigger("reset");
+      $("#tweet-container").empty();
+
+      // reset textarea height so resize does not persist:
+      $("#tweet-text").height(58)
+
+      loadTweets();
+    })
+  } else {
+    console.log("client error")
+  }
+}
+
+const submitTweet = function () {
   $("form").on("submit", function (event) {
-    event.preventDefault();
-    console.log("Button clicked, performing AJAX call...");
-    const text = $("#tweet-text").val();
-    if (tweetValidation(text)) {
-      $.ajax("/tweets", {
-        method: "POST",
-        data: $("#tweet-text").serialize(),
-        dataType: "text"
-      })
-        .then(function () {
-          $(".counter").text(140);
-          $("form").trigger("reset");
-          $("#tweet-container").empty();
-          loadTweets();
-        })
-    } else {
-      console.log("client error")
+    formEventHandler(event);
+  })
+  $("form").on("keypress",function(event) {
+    if(event.keyCode === 13 && !event.shiftKey) {
+      formEventHandler(event);
     }
   });
 }
@@ -34,7 +50,7 @@ function tweetValidation(text) {
     return false;
   } else if (text.length > 140) {
     errorMessage("Your tweet is too long!");
-    return false;
+    return false; 
   } else {
     return true;
   }
@@ -73,43 +89,34 @@ const renderTweets = function (tweets) {
   });
 }
 
-//-------- Escape Function ---------------------------------------------
-//Takes User text input and changes 'damaging' characters to 'safe' ones.
-
-const escape = function (str) {
-  let div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
-
 //-------- Create New Tweet ----------------------------------------------------------------------
 //Using User Submitted Input, this generates a formulated Tweet to be added to our tweet container.
 
 const createTweetElement = function (tweet) {
   const $tweet = $(`
   <article>
-    <header>
-      <span class="left">
-        <img src="${tweet.user.avatars}" alt="avatar">
-          <span>${tweet.user.name}</span>
-      </span>
-      <span class="user-handle">${tweet.user.handle}</span>
-    </header>
-
-    <div class="tweet-body">
-      <p>${escape(tweet.content.text)}</p>
-    </div>
-
-    <footer>
-      <span>${moment(new Date(tweet.created_at)).fromNow()}</span>
-      <span class="icons">
-        <i class="fa fa-flag" aria-hidden="true"></i> &nbsp;
-        <i class="fa fa-retweet" aria-hidden="true"></i> &nbsp;
-        <i class="fa fa-heart" aria-hidden="true"></i> &nbsp;
-      </span>
-    </footer>
+  <header>
+  <span class="left">
+  <img src="${tweet.user.avatars}" alt="avatar">
+  <span>${tweet.user.name}</span>
+  </span>
+  <span class="user-handle">${tweet.user.handle}</span>
+  </header>
+  
+  <div class="tweet-body">
+  <p>${escape(tweet.content.text)}</p>
+  </div>
+  
+  <footer>
+  <span>${moment(new Date(tweet.created_at)).fromNow()}</span>
+  <span class="icons">
+  <i class="fa fa-flag" aria-hidden="true"></i> &nbsp;
+  <i class="fa fa-retweet" aria-hidden="true"></i> &nbsp;
+  <i class="fa fa-heart" aria-hidden="true"></i> &nbsp;
+  </span>
+  </footer>
   </article>
-`);
+  `);
   return $tweet;
 }
 
@@ -118,5 +125,6 @@ const createTweetElement = function (tweet) {
 
 $(document).ready(function () {
   loadTweets();
-  formSubmitHandler();
+  charCounter();
+  submitTweet();
 })
