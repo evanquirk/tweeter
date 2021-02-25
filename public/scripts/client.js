@@ -29,7 +29,7 @@ const formSubmitHandler = function() {
     event.preventDefault();
     console.log("Button clicked, performing AJAX call...");
     const text = $("#tweet-text").val();
-    if (text === ""){
+    if (!text) {
       window.alert("You must add text to your tweet!")
     } else if (text.length > 140) {
       window.alert("Your tweet is too long!");
@@ -41,6 +41,10 @@ const formSubmitHandler = function() {
 
     })
       .then(function () {
+        $(".counter").text(140);
+        $("form").trigger("reset");
+        $("#tweet-container").empty();
+        loadTweets();
         // 1. reset counter, 2. empty form, 3. empty tweet container . remove . empty >> reload tweets
         console.log('Success!')
       })
