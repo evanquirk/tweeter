@@ -1,27 +1,47 @@
+
 const formSubmitHandler = function () {
   $("form").on("submit", function (event) {
     event.preventDefault();
     console.log("Button clicked, performing AJAX call...");
     const text = $("#tweet-text").val();
-    if (!text) {
-      window.alert("You must add text to your tweet!")
-    } else if (text.length > 140) {
-      window.alert("Your tweet is too long!");
-    } else {
+    if (tweetValidation(text)) {
       $.ajax("/tweets", {
         method: "POST",
         data: $("#tweet-text").serialize(),
         dataType: "text"
       })
-        .then(function () {
-          $(".counter").text(140);
-          $("form").trigger("reset");
-          $("#tweet-container").empty();
-          loadTweets();
-        })
+      .then(function () {
+        $(".counter").text(140);
+        $("form").trigger("reset");
+        $("#tweet-container").empty();
+        loadTweets();
+      })
+    } else {
+      console.log("client error")
     }
-  });
+    });
+  }
+  
 
+  function errorMessage(message) {
+    $(".error").text(message);
+    $(".error").slideDown(function () {
+      setTimeout(function () {
+        $(".error").slideUp()
+      }, 1500)
+    })
+  }
+  
+  function tweetValidation(text) {
+    if (!text) {
+      errorMessage("You must add text to your tweet!");
+      return false;
+    } else if (text.length > 140) {
+      errorMessage("Your tweet is too long!");
+      return false;
+    } else {
+      return true;
+    }
 }
 
 function loadTweets() {
@@ -66,7 +86,7 @@ const createTweetElement = function (tweet) {
     </div>
 
     <footer>
-      <span>${tweet.created_at}</span>
+      <span>${moment(new Date(tweet.created_at)).fromNow()}</span>
       <span class="icons">
         <i class="fa fa-flag" aria-hidden="true"></i> &nbsp;
         <i class="fa fa-retweet" aria-hidden="true"></i> &nbsp;
