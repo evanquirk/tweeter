@@ -5,8 +5,8 @@
 #tweet-container article:hover {
   border-radius: 0px;
   background: #9dc6cd;
-  box-shadow:  50px 50px 100px #6b878b, 
-               -50px -50px 100px #cfffff;
+  box-shadow:  40px 40px 800px #6b878b, 
+               -25px -25px 50px #cfffff;
 }
 
 #tweet-container article header {
