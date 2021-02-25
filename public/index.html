@@ -24,9 +24,9 @@
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
 
     <!-- App JS -->
-    <!-- <script type="text/javascript" src="scripts/escape.js"></script> -->
-    <script type="text/javascript" src="scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/escape.js"></script>
     <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="scripts/client.js"></script>
   </head>
 
   <body>
@@ -56,7 +56,7 @@
         <h2>Compose Tweet</h2>
         <div class="error"></div>
         <form action="/tweets" method="POST">
-          <textarea name="text" id="tweet-text"  oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="What are you humming about?"></textarea>
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div id="form-footer">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
