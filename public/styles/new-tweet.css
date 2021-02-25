@@ -9,7 +9,12 @@
   resize: none;
   outline: none;
   background-color: inherit;
+  color: rgb(92, 92, 92);
 
+}
+
+#tweet-text ::placeholder {
+  color: white
 }
 
 #form-footer {

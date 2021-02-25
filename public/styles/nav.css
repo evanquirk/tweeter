@@ -7,7 +7,7 @@ nav {
   height: 120px;
   width: 100%;
   padding: 1.5em;
-  background-color: #4056A1;
+  background-color: #000000;
   font-family: 'Bungee', sans-serif; 
   color: #ffffff;
 }
@@ -20,6 +20,6 @@ nav {
 }
 
 .nav-arrow {
-  color: red;
+  color: #9dc6cd;
   font-size: 1.5em;
 }
