@@ -39,6 +39,7 @@
 #tweet-container article .tweet-body {
   border-bottom: 2px solid rgb(207, 223, 231);
   margin: 0 .5em 0 .5em;
+  word-break: break-word;
 }
 
 #tweet-container article footer {
