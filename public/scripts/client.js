@@ -1,5 +1,4 @@
 const formSubmitHandler = function() {
-
   $("form").on("submit", function(event) {
     event.preventDefault();
     console.log("Button clicked, performing AJAX call...");
@@ -45,25 +44,33 @@ const renderTweets = function(tweets) {
   
 }
 
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 const createTweetElement = function(tweet) {
+
+
   const $tweet = $(`
   <article>
-  <header>
-  <span class="left">
-  <img src="${tweet.user.avatars}" alt="avatar">
-  <span>${tweet.user.name}</span>
-  </span>
-  <span class="user-handle">${tweet.user.handle}</span>
-  </header>
-  <div class="tweet-body">
-  <p>${tweet.content.text}</p>
-  </div>
+    <header>
+      <span class="left">
+        <img src="${tweet.user.avatars}" alt="avatar">
+          <span>${tweet.user.name}</span>
+      </span>
+      <span class="user-handle">${tweet.user.handle}</span>
+    </header>
+    <div class="tweet-body">
+    <p>${escape(tweet.content.text)}</p>
+    </div>
   <footer>
-  <span>${tweet.created_at}</span>
-  <span class="icons">
-  <i class="fa fa-flag" aria-hidden="true"></i> &nbsp;
-  <i class="fa fa-retweet" aria-hidden="true"></i> &nbsp;
-  <i class="fa fa-heart" aria-hidden="true"></i> &nbsp;
+    <span>${tweet.created_at}</span>
+    <span class="icons">
+      <i class="fa fa-flag" aria-hidden="true"></i> &nbsp;
+      <i class="fa fa-retweet" aria-hidden="true"></i> &nbsp;
+      <i class="fa fa-heart" aria-hidden="true"></i> &nbsp;
   </span>
   </footer>
   </article>
