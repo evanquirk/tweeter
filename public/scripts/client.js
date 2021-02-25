@@ -1,4 +1,7 @@
 
+//-------- Form Submit For Tweet Creation ----------------------------------------------------------
+//Capture form submit to store form info using AJAX POST request, and reset form for next tweet. 
+
 const formSubmitHandler = function () {
   $("form").on("submit", function (event) {
     event.preventDefault();
@@ -10,39 +13,47 @@ const formSubmitHandler = function () {
         data: $("#tweet-text").serialize(),
         dataType: "text"
       })
-      .then(function () {
-        $(".counter").text(140);
-        $("form").trigger("reset");
-        $("#tweet-container").empty();
-        loadTweets();
-      })
+        .then(function () {
+          $(".counter").text(140);
+          $("form").trigger("reset");
+          $("#tweet-container").empty();
+          loadTweets();
+        })
     } else {
       console.log("client error")
     }
-    });
-  }
-  
-
-  function errorMessage(message) {
-    $(".error").text(message);
-    $(".error").slideDown(function () {
-      setTimeout(function () {
-        $(".error").slideUp()
-      }, 1500)
-    })
-  }
-  
-  function tweetValidation(text) {
-    if (!text) {
-      errorMessage("You must add text to your tweet!");
-      return false;
-    } else if (text.length > 140) {
-      errorMessage("Your tweet is too long!");
-      return false;
-    } else {
-      return true;
-    }
+  });
 }
+
+//-------- Tweet Validation --------------------------------------------------------------
+//Ensure that user text input for tweet is greater that 0 characters, but no more than 140.
+
+function tweetValidation(text) {
+  if (!text) {
+    errorMessage("You must add text to your tweet!");
+    return false;
+  } else if (text.length > 140) {
+    errorMessage("Your tweet is too long!");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//-------- Error Message ------------------------------------------------------------------
+//If Tweet Validation fails, display the appropriate error message on screen for 1.5 seconds.
+
+function errorMessage(message) {
+  $(".error").text(message);
+  $(".error").slideDown(function () {
+    setTimeout(function () {
+      $(".error").slideUp()
+    }, 1500)
+  })
+}
+
+//-------- Load Tweets -----------------------------------------------------------------------
+//Load all tweets from the database, and pass the tweet objects to renderTweets for formatting.
 
 function loadTweets() {
   $.get("/tweets", function (data) {
@@ -52,23 +63,27 @@ function loadTweets() {
   });
 }
 
+//-------- Render Tweets ------------------------------------------------------------
+//Pass through all tweets in database to be formatted using our create tweet function.
 
 const renderTweets = function (tweets) {
   tweets.forEach(function (element) {
     const $tweet = createTweetElement(element);
     $("#tweet-container").prepend($tweet);
   });
-  // loops through tweets (below)
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
 }
 
+//-------- Escape Function ---------------------------------------------
+//Takes User text input and changes 'damaging' characters to 'safe' ones.
 
 const escape = function (str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 }
+
+//-------- Create New Tweet ----------------------------------------------------------------------
+//Using User Submitted Input, this generates a formulated Tweet to be added to our tweet container.
 
 const createTweetElement = function (tweet) {
   const $tweet = $(`
@@ -93,13 +108,13 @@ const createTweetElement = function (tweet) {
         <i class="fa fa-heart" aria-hidden="true"></i> &nbsp;
       </span>
     </footer>
-
   </article>
 `);
-
   return $tweet;
 }
 
+//-------- Document Ready ---------------------------------
+//Ensure that the DOM is ready before calling any functions.
 
 $(document).ready(function () {
   loadTweets();
