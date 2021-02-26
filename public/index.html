@@ -41,21 +41,16 @@
     </nav>
     
     <header class="avatar-header">
-      <div>
-          <img src="/images/parrot.jpg"> 
-      </div>
-      <div>
-          <p><b>A</b> Bird</p>
-      </div>
-  </header>
-
+      <img src="/images/parrot.png" id="profile-picture"> 
+      <p><b>Timothy</b> Debirb</p>
+    </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
         <div class="error"></div>
         <form action="/tweets" method="POST">
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <textarea name="text" id="tweet-text" placeholder="Wanna weigh in on this debate?"></textarea>
           <div id="form-footer">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
