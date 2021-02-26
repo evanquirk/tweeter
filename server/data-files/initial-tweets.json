@@ -8,7 +8,7 @@
     "content": {
       "text": "Frankly, I find the concept of eating birds to be disgusting. Cats should be ashamed of themselves."
     },
-    "created_at": 1614145045645
+    "created_at": 1613977204698
   },
   {
     "user": {
@@ -19,6 +19,28 @@
     "content": {
       "text": "You can't be serious. Back me up here fellow cats. #catsunite!"
     },
-    "created_at": 1614231445645
+    "created_at": 1614063604698
+  },
+  {
+    "user": {
+      "name": "Marmalade",
+      "avatars": "https://i.imgur.com/kEnI2rh.png",
+      "handle": "@TheLocalBookshopCat"
+    },
+    "content": {
+      "text": "Oh no, not this again. Come to my owner's shop and read a friggin book!"
+    },
+    "created_at": 1614150004698
+  },
+  {
+    "user": {
+      "name": "Sunday",
+      "avatars": "https://i.imgur.com/zLnCrJ9.png",
+      "handle": "@SundayTheDogRules"
+    },
+    "content": {
+      "text": "woof! lmao"
+    },
+    "created_at": 1614236404698
   }
 ]
