@@ -33,7 +33,7 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <h2>tweeter</h2>
+      <div id="tweeter"><span>tweeter</span></div>
       <div id="right-nav">
         <span><b>Write</b> a new tweet</span>
         <i class="fa fa-angle-double-down nav-arrow" aria-hidden="true"></i>
@@ -42,19 +42,17 @@
     
     <header class="avatar-header">
       <div>
-          <img src="/images/profile-hex.png"> 
+          <img src="/images/parrot.jpg"> 
       </div>
       <div>
-          <p><b>Evan</b> Quirk</p>
+          <p><b>A</b> Bird</p>
       </div>
   </header>
 
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
         <div class="error"></div>
         <form action="/tweets" method="POST">
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
