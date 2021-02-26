@@ -89,6 +89,15 @@ const renderTweets = function (tweets) {
   });
 }
 
+const composeNewSlider = function () {
+  $('.new-tweet').hide();
+  $('#right-nav').click(function () {
+    $('.new-tweet').slideToggle(400, function () {
+      $('#tweet-text').focus();
+    });
+  });
+};
+
 //-------- Create New Tweet ----------------------------------------------------------------------
 //Using User Submitted Input, this generates a formulated Tweet to be added to our tweet container.
 
@@ -127,4 +136,5 @@ $(document).ready(function () {
   loadTweets();
   charCounter();
   submitTweet();
+  composeNewSlider();
 })
