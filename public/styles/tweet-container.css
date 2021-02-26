@@ -1,10 +1,10 @@
 #tweet-container article {
-  border: 2px solid lightblue;
+  border: 2px dashed rgb(96, 172, 198);
   margin: 1em 0 1em 0;
 }
 #tweet-container article:hover {
   border-radius: 0px;
-  background: #9dc6cd;
+  background: #a0cfd7;
   box-shadow:  40px 40px 800px #6b878b, 
                -25px -25px 50px #cfffff;
 }
@@ -19,6 +19,7 @@
 
 #tweet-container article header img {
   max-width: 75px;
+  margin-right: 5%;
 }
 
 #tweet-container article header .left {
@@ -37,7 +38,7 @@
 }
 
 #tweet-container article .tweet-body {
-  border-bottom: 2px solid rgb(207, 223, 231);
+  border-bottom: 2px solid rgb(92, 107, 114);
   margin: 0 .5em 0 .5em;
   word-break: break-word;
 }
@@ -51,5 +52,10 @@
 }
 
 #tweet-container article footer .icons {
+  opacity: 0%;
+}
+
+#tweet-container article:hover footer .icons {
+  opacity: 100%;
   color: teal;
 }

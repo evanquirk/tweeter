@@ -7,7 +7,6 @@ nav {
   height: 120px;
   width: 100%;
   padding: 1.5em;
-  background-color: black;
   font-family: 'Bungee', sans-serif; 
   color: #ffffff;
 }
@@ -22,4 +21,9 @@ nav {
 .nav-arrow {
   color: #9dc6cd;
   font-size: 1.5em;
+}
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+  .nav-arrow {
+    color: #ffffff;
+  }
 }
