@@ -1,13 +1,41 @@
+
 .avatar-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 120px;
-  height: 400px;
+  margin-top: 200px;
+  padding-top: 10px;
+  height: 40%;
   width: 100%;
   background-color: #58848f;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   font-size: 1.5em;
   color: #ffffff;
 }
+
+img#profile-picture {
+  max-width: 75%;
+  align-content: center;
+}
+@media only screen and (min-width: 700px) and (max-width: 1023px) {
+.avatar-header {
+  width: 100vw;
+  padding-top: 120px;
+  margin-top: 0px;
+  margin-left: none;
+  margin-right: none;
+
+}
+}
+
+@media only screen and (min-width: 300px) and (max-width: 699px) {
+  .avatar-header {
+    width: 100vw;
+    padding-top: 120px;
+    margin-top: 0px;
+    margin-left: none;
+    margin-right: none;
+  
+  }
+  }
