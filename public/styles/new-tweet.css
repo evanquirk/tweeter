@@ -20,12 +20,8 @@
   resize: none;
   outline: none;
   background-color: inherit;
-  color: rgb(92, 92, 92);
+  color: rgb(0, 0, 0);
 
-}
-
-#tweet-text ::placeholder {
-  color: white
 }
 
 #form-footer {
@@ -37,7 +33,13 @@
 }
 
 #form-footer button {
-  background-color: #4056A1;
+  background-color: #000000;
   color: #ffffff;
   border: none;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1024px) {
+  .new-tweet {
+  margin-top: 20px
+  }
 }
