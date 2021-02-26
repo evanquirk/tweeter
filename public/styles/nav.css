@@ -22,8 +22,17 @@ nav {
   color: #9dc6cd;
   font-size: 1.5em;
 }
-@media only screen and (min-width: 320px) and (max-width: 1023px) {
+@media only screen and (min-width: 700px) and (max-width: 1023px) {
   .nav-arrow {
     color: #ffffff;
   }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 699px) {
+  #right-nav {
+    color: #ffffff;
+  }
+  .nav-arrow {
+    color: #ffffff;
+  };
 }
